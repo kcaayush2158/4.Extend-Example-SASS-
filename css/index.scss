@@ -1,0 +1,26 @@
+$primary-color: red;
+$text-color: white;
+$secondory-color: black; // @mixin is just like the function in javascript where the parameter is passed and assigned in the  property
+@mixin border-radius($value) {
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+}
+// % are the placeholders which is used to make the template and it cannot be read by the css file
+%container-template{
+  background-color: $primary-color;
+  height: 200px;
+  width: 400px;
+  color: $text-color;
+  @include border-radius(10px); //@include is used to import the mixin in the class
+}
+.container {
+  @extend %container-template;
+  @include border-radius(10px); //@include is used to import the mixin in the class
+}
+
+.container2 {
+  background-color: $secondory-color;
+  @extend %container-template;  //@ extends is used to inherit property from the parent
+  @include border-radius(15px); //@include is used to import the mixin in the class
+}
